@@ -1,0 +1,21 @@
+{
+  "name": "response",
+  "version": "0.0.1",
+  "description": "Creates standard node-style responses, but with http code formats.",
+  "author": {
+    "name": "Matthew Pikar",
+    "email": "matthew.pikar@gmail.com"
+  },
+  "private": true,
+  "main": "response.js",
+  "scripts": {
+    "test": "mocha test/*.test.js"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1"
+  },
+  "devDependencies": {
+    "assert": "^1.3.0",
+    "mocha": "^2.3.4"
+  }
+}
