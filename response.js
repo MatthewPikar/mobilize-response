@@ -107,12 +107,31 @@ module.exports = function response(args, callback) {
             if (typeof(status[code]) === 'undefined') return clbk(new Error("Provided code is invalid."), null);
         }
 
-        var response = {status: status[code]};
+        var res = {};
+        res = _.merge(res, template);
+        res = _.merge(res, {status: status[code]});
+        res = _.merge(res, args);
+//        console.log("\n\n" + JSON.stringify(res) + "\n\n");
+        if(!clbk) return res;
+        else return clbk(null, res);
+    };
 
-        _.forEach(template, function(val, key){response[key] = val;});
-        _.forEach(args, function(val, key){response[key] = val;});
+    self.forward = function(message, args){
+        if(!clbk){
+            if (typeof(code) !== 'number') return new Error("Code is missing or not a number");
+            if (typeof(status[code]) === 'undefined') return new Error("Provided code is invalid.");
+        }
+        else {
+            if (typeof(code) !== 'number') return clbk(new Error("Code is missing or not a number"), null);
+            if (typeof(status[code]) === 'undefined') return clbk(new Error("Provided code is invalid."), null);
+        }
 
-        if(!clbk) return response;
-        else return clbk(null, response);
+        var res = {};
+        res = _.merge(res, template);
+        res = _.merge(res, message);
+        res = _.merge(res, args);
+//        console.log("\n\n" + JSON.stringify(res) + "\n\n");
+        if(!clbk) return res;
+        else return clbk(null, res);
     };
 };
