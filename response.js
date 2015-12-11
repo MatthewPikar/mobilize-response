@@ -117,15 +117,6 @@ module.exports = function response(args, callback) {
     };
 
     self.forward = function(message, args){
-        if(!clbk){
-            if (typeof(code) !== 'number') return new Error("Code is missing or not a number");
-            if (typeof(status[code]) === 'undefined') return new Error("Provided code is invalid.");
-        }
-        else {
-            if (typeof(code) !== 'number') return clbk(new Error("Code is missing or not a number"), null);
-            if (typeof(status[code]) === 'undefined') return clbk(new Error("Provided code is invalid."), null);
-        }
-
         var res = {};
         res = _.merge(res, template);
         res = _.merge(res, message);
