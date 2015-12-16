@@ -12,6 +12,8 @@
     "test": "mocha test/*.test.js"
   },
   "dependencies": {
+    "bunyan": "^1.5.1",
+    "fs": "0.0.2",
     "lodash": "^3.10.1"
   },
   "devDependencies": {
