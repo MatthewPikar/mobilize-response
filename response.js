@@ -123,7 +123,7 @@ module.exports = function response(options) {
         streams: [
             {
                 name: 'file', level: 'info', type: 'rotating-file',
-                path: self.options.logPath + 'info-' + self.options.context + ".json",
+                path: self.options.logPath + 'info-' + self.options.context + ".log",
                 period: '2d', count: 1
             }
         ]});
@@ -132,7 +132,7 @@ module.exports = function response(options) {
         streams: [
             {
                 name: 'file', level: 'error', type: 'rotating-file',
-                path: self.options.logPath + 'error-' + self.options.context + ".json",
+                path: self.options.logPath + 'error-' + self.options.context + ".log",
                 period: '1w', count: 2
             },
             {name: 'stdout', level: 'error', stream: process.stdout}
@@ -142,7 +142,7 @@ module.exports = function response(options) {
         streams: [
             {
                 name: 'debug', level: 'debug', type: 'rotating-file',
-                path: self.options.logPath + 'debug-' + self.options.context + ".json",
+                path: self.options.logPath + 'debug-' + self.options.context + ".log",
                 period: '4h', count: 0
             }
         ]});
