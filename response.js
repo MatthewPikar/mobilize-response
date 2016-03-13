@@ -182,10 +182,10 @@ module.exports = function response(options) {
             infoLog.info({response: res}, 'info');
         else if ((res.status.code / 100 >= 4) && (res.status.code / 100 < 5)
             && self.options.logClientErrors)
-            infoLog.info({response: res}, 'info');
+            infoLog.info({response: res}, 'A client error has occurred.');
         else if ((res.status.code / 100 >= 5)
             && self.options.logInternalErrors)
-            errorLog.error({response: res}, 'error');
+            errorLog.error({response: res}, 'An internal error has occurred.');
 
         if (self.options.debug) debugLog.debug({response: res}, 'debug');
 
@@ -218,10 +218,10 @@ module.exports = function response(options) {
                 infoLog.info({response: res}, 'info');
         else if ((res.status.code / 100 >= 4) && (res.status.code / 100 < 5)
             && self.options.logClientErrors)
-                infoLog.info({response: res}, 'info');
+                infoLog.info({response: res}, 'A client error has occurred.');
         else if ((res.status.code / 100 >= 5)
             && self.options.logInternalErrors)
-                errorLog.error({response: res}, 'error');
+                errorLog.error({response: res}, 'An internal error has occurred.');
 
         if (self.options.debug) debugLog.debug({response: res}, 'debug');
 
@@ -257,10 +257,10 @@ function responseSerializer(message){
     return {
         req_id: message.requestId,
         status: message.status.code,
-        latency: message.latency ? message.latency: '',
+        latency: message.latency,
         res: res,
-        req: (message.request ? message.request : ''),
-        err: (message.error ? message.error: '')
+        req: message.request,
+        err: message.error
     }}
 
 function passthrough(err, res){return null;}
